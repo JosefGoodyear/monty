@@ -7,27 +7,17 @@ int main(int argc, char **argv)
 	size_t len = 0;
 	ssize_t line_size;
 	char *token = NULL;
-	char *global = NULL;
 
+	(void)argc;
+	
 	file1 = fopen(argv[1], "r");	
-	line_size = getline(&line, &len, file1);
-	token = strtok(line, " ");
-	if (strcmp(token, "push") == 0)
-		global = strtok(NULL, " ");
-	printf("global = %s\n", global);
 	while (line_size >= 0)
-	{	
-		printf("%s\n", token);
+	{		
 		line_size = getline(&line, &len, file1);
 		token = strtok(line, " ");
 		if (strcmp(token, "push") == 0)
-			global = strtok(NULL, " ");
-		printf("global = %s\n", global);
+			new_num = atoi(strtok(NULL, " "));
+		printf("%s\n", token);
 	}
-
-	(void)argc;
 	return (0);
 }
-
-
-

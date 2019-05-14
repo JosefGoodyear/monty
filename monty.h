@@ -4,6 +4,8 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+int new_num;
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
