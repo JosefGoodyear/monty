@@ -36,6 +36,8 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-void compare(char *token);
+
+void (*compare(char *token))(stack_t **stack, unsigned int line_number);
+void push_stack(stack_t **stack, unsigned int line_number);
 
 #endif

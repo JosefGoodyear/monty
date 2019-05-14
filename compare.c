@@ -1,6 +1,6 @@
 #include "monty.h"
 
-void compare(char *token)
+void (*compare(char *token))(stack_t **stack, unsigned int line_number)
 {
 	int i;
 
@@ -16,10 +16,12 @@ void compare(char *token)
 
 	for (i = 0; func_list[i].opcode; i++)
 		if(strcmp(token, func_list[i].opcode) == 0)
-			func_list[i].f;
+			return (func_list[i].f);
+
+	return (NULL);
 }
 
-void push_stack(stack_t **stack, unsigned int line_number);
+void push_stack(stack_t **stack, unsigned int line_number)
 {
 	
 }
