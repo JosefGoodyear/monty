@@ -11,16 +11,14 @@ int main(int argc, char **argv)
 	unsigned int line_number = 0;
 	
 	(void)argc;
-	
 	file1 = fopen(argv[1], "r");	
-	while (line_size >= 0)
-	{		
+	do {		
 		line_number++;
 		line_size = getline(&line, &len, file1);
 		token = strtok(line, " ");
 		if (strcmp(token, "push") == 0)
 			new_num = atoi(strtok(NULL, " "));
 		(*compare(token))(stack, line_number);
-	}
+	} while (line_size >= 0);
 	return (0);
 }

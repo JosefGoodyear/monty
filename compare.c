@@ -5,12 +5,13 @@ void (*compare(char *token))(stack_t **stack, unsigned int line_number)
 	int i;
 
 	instruction_t func_list[] = {
-		{"push", push_stack},
-		{"pint", print_stack},
-		{"pop", remove_top},
-		{"swap", swap_nodes},
-		{"add", add_nodes},
-		{"nop", nope},
+		{"push", push},
+		{"pint", pint},
+		{"pall", pall},
+		{"pop", pop},
+		{"swap", swap},
+		{"add", add},
+		{"nop", nop},
 		{NULL, NULL}
 	};
 
@@ -20,11 +21,3 @@ void (*compare(char *token))(stack_t **stack, unsigned int line_number)
 
 	return (NULL);
 }
-
-void push_stack(stack_t **stack, unsigned int line_number)
-{
-	
-}
-
-
-
