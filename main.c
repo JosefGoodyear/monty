@@ -17,7 +17,7 @@ int main(int argc, char **argv)
 		token = strtok(line, " ");
 		if (strcmp(token, "push") == 0)
 			new_num = atoi(strtok(NULL, " "));
-		printf("%s\n", token);
+		compare(token);
 	}
 	return (0);
 }
