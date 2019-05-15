@@ -5,7 +5,9 @@ void push(stack_t **stack, unsigned int line_number)
 	(void)stack;
 	(void)line_number;
 	printf("push\n");
+	printf("%d", gv.num);
 }
+
 
 void pint(stack_t **stack, unsigned int line_number)
 {
