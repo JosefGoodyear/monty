@@ -3,7 +3,7 @@
 void push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *newNode, *current = *stack;
-
+	
 	(void)line_number;
 	newNode = malloc(sizeof(stack_t));
 	if (!newNode)

@@ -6,11 +6,11 @@ int main(int argc, char **argv)
 	char *line = NULL;
 	size_t len = 0;
 	char *token = NULL;
-	stack_t **stack = NULL;
+	stack_t *stack = NULL;
 	unsigned int line_number = 0;
 	extern gbv gv;
 	(void)argc;
-
+	gv.num = 0;
 	file1 = fopen(argv[1], "r");	
 	while (getline(&line, &len, file1) != EOF)
 	{		
@@ -20,7 +20,7 @@ int main(int argc, char **argv)
 		{
 			gv.num = atoi(strtok(NULL, " \n"));
 		}
-		compare(token, stack, line_number);
+		compare(token, &stack, line_number);
 	}
 	return (0);
 }
