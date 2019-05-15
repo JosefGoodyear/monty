@@ -8,7 +8,7 @@ void push(stack_t **stack, unsigned int line_number)
 	newNode = malloc(sizeof(stack_t));
 	if (!newNode)
 	{
-		perror("Error: malloc failed\n");
+		fprintf(stderr,"Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 	newNode->n = gv.num;
@@ -23,9 +23,13 @@ void push(stack_t **stack, unsigned int line_number)
 void pint(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp = *stack;
-
+	
+	if (!*stack)
+	{
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
+		exit(EXIT_FAILURE);
+	}
 	printf("%d\n", temp->n);
-	(void)line_number;
 }
 
 void pall(stack_t **stack, unsigned int line_number)

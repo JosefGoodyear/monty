@@ -41,7 +41,7 @@ typedef struct globalvariables
 } gbv;
 gbv gv;
 
-
+char *isNumber(char *value, unsigned int line_number);
 void compare(char *token, stack_t **stack, unsigned int line_number);
 void push(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
