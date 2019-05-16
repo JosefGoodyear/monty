@@ -34,7 +34,12 @@ typedef struct instruction_s
         char *opcode;
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
-
+/**
+ * struct globalvariables - global struct of variables
+ * @num: value of node
+ *
+ * Description: variables to share between functions
+ */
 typedef struct globalvariables
 {
 	int num;

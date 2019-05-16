@@ -1,5 +1,12 @@
 #include "monty.h"
 
+/**
+* main - run the monty compiler
+* @argc: argument count
+* @argv: argument vector
+*
+* Return: always 0
+*/
 int main(int argc, char **argv)
 {
 	FILE *file1;
@@ -9,21 +16,22 @@ int main(int argc, char **argv)
 	stack_t *stack = NULL;
 	unsigned int line_number = 0;
 	char *value;
+
 	extern gbv gv;
-	gv.num = 0;	
+
 	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 	file1 = fopen(argv[1], "r");
-	if (!file1)	
+	if (!file1)
 	{
 		fprintf(stderr, "Error: can't open file %s", argv[2]);
 		exit(EXIT_FAILURE);
 	}
 	while (getline(&line, &len, file1) != EOF)
-	{		
+	{
 		line_number++;
 		token = strtok(line, " \n");
 		if (strcmp(token, "push") == 0)
@@ -42,15 +50,21 @@ int main(int argc, char **argv)
 	fclose(file1);
 	return (0);
 }
-
+/**
+* isNumber - check if a string is numerical
+* @value: string to check
+* @line_number: line of code
+*
+* Return: string, if numerical
+*/
 char *isNumber(char *value, unsigned int line_number)
 {
 	unsigned int i = 0;
-	
+
 	if ((value[i] < '0' || value[i] > '9') && value[i] != '-')
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
-		exit(EXIT_FAILURE);		
+		exit(EXIT_FAILURE);
 	}
 	i++;
 	while (value[i])
@@ -58,9 +72,9 @@ char *isNumber(char *value, unsigned int line_number)
 		if (value[i] < '0' || value[i] > '9')
 		{
 			fprintf(stderr, "L%d: usage: push integer\n", line_number);
-			exit(EXIT_FAILURE);		
+			exit(EXIT_FAILURE);
 		}
-		i++;	
+		i++;
 	}
 	return (value);
 }
