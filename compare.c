@@ -14,6 +14,8 @@ void compare(char *token, stack_t **stack, unsigned int line_number)
 		{"nop", nop},
 		{"mul", mul},
 		{"sub", sub},
+		{"mod", mod},
+		{"div", divide},
 		{NULL, NULL}
 	};
 	for (i = 0; func_list[i].opcode != NULL; i++)
