@@ -12,13 +12,13 @@ gbv gv;
 int main(int argc, char **argv)
 {
 	size_t len = 0;
-	char *token = NULL;
 	unsigned int line_number = 0;
 	char *value;
 
 	gv.stack = NULL;
 	gv.mfile = NULL;
 	gv.line = NULL;
+	gv.token = NULL;
 	if (argc != 2)
 		errorHandler(2, line_number);
 	gv.filename = argv[1];
@@ -28,17 +28,17 @@ int main(int argc, char **argv)
 	while (getline(&gv.line, &len, gv.mfile) != EOF)
 	{
 		line_number++;
-		token = strtok(gv.line, " \n");
-		if (!token)
+		gv.token = strtok(gv.line, " \n");
+		if (!gv.token)
 			continue;
-		if (strcmp(token, "push") == 0)
+		if (strcmp(gv.token, "push") == 0)
 		{
 			value = strtok(NULL, " \n");
 			if (!value)
 				errorHandler(1, line_number);
 			gv.num = atoi(isNumber(value, line_number));
 		}
-		compare(token, &gv.stack, line_number);
+		compare(gv.token, &gv.stack, line_number);
 	}
 	freeAll();
 	return (0);
@@ -87,6 +87,9 @@ void errorHandler(unsigned int errno, unsigned int line_number)
 		case 6: fprintf(stderr, "L%d: can't sub, stack too short\n", line_number);
 			break;
 		case 7: fprintf(stderr, "L%d: can't mul, stack too short\n", line_number);
+			break;
+		case 8:fprintf(stderr, "L%d: unknown instruction %s\n", line_number, gv.token);
+	
 	}
 
 		freeAll();	

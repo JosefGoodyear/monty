@@ -47,6 +47,7 @@ typedef struct globalvariables
 	FILE *mfile;
 	stack_t *stack;
 	char *filename;
+	char *token;
 } gbv;
 
 extern gbv gv;
