@@ -13,10 +13,10 @@ int main(int argc, char **argv)
 {
 	size_t len = 0;
 	char *token = NULL;
-	stack_t *stack = NULL;
 	unsigned int line_number = 0;
 	char *value;
 
+	gv.stack = NULL;
 	gv.mfile = NULL;
 	gv.line = NULL;
 	if (argc != 2)
@@ -28,6 +28,8 @@ int main(int argc, char **argv)
 	{
 		line_number++;
 		token = strtok(gv.line, " \n");
+		if (!token)
+			continue;
 		if (strcmp(token, "push") == 0)
 		{
 			value = strtok(NULL, " \n");
@@ -35,7 +37,7 @@ int main(int argc, char **argv)
 				errorHandler(1, line_number);
 			gv.num = atoi(isNumber(value, line_number));
 		}
-		compare(token, &stack, line_number);
+		compare(token, &gv.stack, line_number);
 	}
 	freeAll();
 	return (0);
