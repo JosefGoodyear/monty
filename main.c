@@ -1,5 +1,7 @@
 #include "monty.h"
 
+gbv gv;
+
 /**
 * main - run the monty compiler
 * @argc: argument count
@@ -16,8 +18,6 @@ int main(int argc, char **argv)
 	stack_t *stack = NULL;
 	unsigned int line_number = 0;
 	char *value;
-
-	extern gbv gv;
 
 	if (argc != 2)
 	{

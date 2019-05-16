@@ -44,7 +44,8 @@ typedef struct globalvariables
 {
 	int num;
 } gbv;
-gbv gv;
+
+extern gbv gv;
 
 char *isNumber(char *value, unsigned int line_number);
 void compare(char *token, stack_t **stack, unsigned int line_number);
