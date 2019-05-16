@@ -30,7 +30,7 @@ void compare(char *token, stack_t **stack, unsigned int line_number)
 		{NULL, NULL}
 	};
 	for (i = 0; func_list[i].opcode != NULL; i++)
-		if(strcmp(token, func_list[i].opcode) == 0)
+		if (strcmp(token, func_list[i].opcode) == 0)
 		{
 			func_list[i].f(stack, line_number);
 			foundMatch = 1;
