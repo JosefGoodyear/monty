@@ -81,8 +81,11 @@ void errorHandler(unsigned int errno, unsigned int line_number)
 			break;
 		case 4: fprintf(stderr, "Error: malloc failed\n");
 			break;
-		case 5: fprintf( stderr, "L%d: can't pint, stack empty\n", line_number);
+		case 5: fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
 			break;
+		case 6: fprintf(stderr, "L%d: can't sub, stack too short\n", line_number);
+			break;
+		case 7: fprintf(stderr, "L%d: can't mul, stack too short\n", line_number);
 	}
 		freeAll();	
 		exit(EXIT_FAILURE);
