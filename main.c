@@ -88,8 +88,19 @@ void errorHandler(unsigned int errno, unsigned int line_number)
 			break;
 		case 7: fprintf(stderr, "L%d: can't mul, stack too short\n", line_number);
 			break;
-		case 8:fprintf(stderr, "L%d: unknown instruction %s\n", line_number, gv.token);
-	
+		case 8: fprintf(stderr, "L%d: unknown instruction %s\n", line_number, gv.token);
+			break;
+		case 9:	fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+			break;
+		case 10: fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
+			break;
+		case 11: fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
+			break;
+		case 12: fprintf(stderr, "L%d: can't div, stack too short\n", line_number);
+			break;
+		case 13: fprintf(stderr, "L%d: can't mod, stack too short\n", line_number);
+			break;
+		case 14: fprintf(stderr, "L%d: division by zero\n", line_number);
 	}
 
 		freeAll();	
