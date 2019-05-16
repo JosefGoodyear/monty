@@ -21,6 +21,7 @@ int main(int argc, char **argv)
 	gv.line = NULL;
 	if (argc != 2)
 		errorHandler(2, line_number);
+	gv.filename = argv[1];
 	gv.mfile = fopen(argv[1], "r");
 	if (!gv.mfile)
 		errorHandler(3, line_number);
@@ -77,7 +78,7 @@ void errorHandler(unsigned int errno, unsigned int line_number)
 			break;
 		case 2: fprintf(stderr, "USAGE: monty file\n");
 			break;
-		case 3: fprintf(stderr, "Error: can't open file %s", "test");
+		case 3: fprintf(stderr, "Error: can't open file %s\n", gv.filename);
 			break;
 		case 4: fprintf(stderr, "Error: malloc failed\n");
 			break;
@@ -87,6 +88,7 @@ void errorHandler(unsigned int errno, unsigned int line_number)
 			break;
 		case 7: fprintf(stderr, "L%d: can't mul, stack too short\n", line_number);
 	}
+
 		freeAll();	
 		exit(EXIT_FAILURE);
 }

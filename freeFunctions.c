@@ -2,9 +2,12 @@
 
 void freeAll(void)
 {
+	
 	free(gv.line);
 	freeLinkedList(gv.stack);
-	fclose(gv.mfile);
+	if (gv.mfile)
+		fclose(gv.mfile);
+	
 }
 
 void freeLinkedList(stack_t *stack)
