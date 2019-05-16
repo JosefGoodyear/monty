@@ -43,9 +43,9 @@ void divide(stack_t **stack, unsigned int line_number)
 	int quotient;
 
 	if (*stack == NULL || (*stack)->next == NULL)
-		errorHandler(7, line_number);
+		errorHandler2(12, line_number);
 	if ((*stack)->n == 0)
-		errorHandler(14, line_number);
+		errorHandler2(14, line_number);
 	(*stack) = (*stack)->next;
 	quotient = (*stack)->n / (*stack)->prev->n;
 	(*stack)->n = quotient;
@@ -62,9 +62,9 @@ void mod(stack_t **stack, unsigned int line_number)
 	int remainder;
 
 	if (*stack == NULL || (*stack)->next == NULL)
-		errorHandler(7, line_number);
+		errorHandler2(13, line_number);
 	if ((*stack)->n == 0)
-		errorHandler(14, line_number);
+		errorHandler2(14, line_number);
 	(*stack) = (*stack)->next;
 	remainder = (*stack)->n % (*stack)->prev->n;
 	(*stack)->n = remainder;

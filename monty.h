@@ -37,6 +37,11 @@ typedef struct instruction_s
 /**
  * struct globalvariables - global struct of variables
  * @num: value of node
+ * @line: line from getline
+ * @mfile: textfile
+ * @stack: pointer to the head of stack_t
+ * @filename: file name string
+ * @token: token
  *
  * Description: variables to share between functions
  */
@@ -53,6 +58,7 @@ typedef struct globalvariables
 extern gbv gv;
 
 void errorHandler(unsigned int errno, unsigned int line_number);
+void errorHandler2(unsigned int errno, unsigned int line_number);
 char *isNumber(char *value, unsigned int line_number);
 void compare(char *token, stack_t **stack, unsigned int line_number);
 void push(stack_t **stack, unsigned int line_number);
