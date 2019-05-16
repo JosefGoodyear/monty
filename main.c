@@ -39,6 +39,8 @@ int main(int argc, char **argv)
 			gv.num = atoi(isNumber(value, line_number));
 		}
 		compare(gv.token, &gv.stack, line_number);
+		free(gv.line);
+		gv.line = NULL;
 	}
 	freeAll();
 	return (0);
