@@ -11,10 +11,7 @@ void push(stack_t **stack, unsigned int line_number)
 	(void)line_number;
 	newNode = malloc(sizeof(stack_t));
 	if (!newNode)
-	{
-		fprintf(stderr, "Error: malloc failed\n");
-		exit(EXIT_FAILURE);
-	}
+		errorHandler(4, line_number);
 	newNode->n = gv.num;
 	newNode->next = *stack;
 	newNode->prev = NULL;
@@ -34,10 +31,7 @@ void pint(stack_t **stack, unsigned int line_number)
 	stack_t *temp = *stack;
 
 	if (!*stack)
-	{
-		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
-		exit(EXIT_FAILURE);
-	}
+		errorHandler(5, line_number);
 	printf("%d\n", temp->n);
 }
 

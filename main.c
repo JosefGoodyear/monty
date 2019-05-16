@@ -20,16 +20,10 @@ int main(int argc, char **argv)
 	char *value;
 
 	if (argc != 2)
-	{
-		fprintf(stderr, "USAGE: monty file\n");
-		exit(EXIT_FAILURE);
-	}
+		errorHandler(2, line_number);
 	file1 = fopen(argv[1], "r");
 	if (!file1)
-	{
-		fprintf(stderr, "Error: can't open file %s", argv[2]);
-		exit(EXIT_FAILURE);
-	}
+		errorHandler(3, line_number);
 	while (getline(&line, &len, file1) != EOF)
 	{
 		line_number++;
@@ -38,10 +32,7 @@ int main(int argc, char **argv)
 		{
 			value = strtok(NULL, " \n");
 			if (!value)
-			{
-				fprintf(stderr, "L%d: usage: push integer\n", line_number);
-				exit(EXIT_FAILURE);
-			}
+				errorHandler(1, line_number);
 			gv.num = atoi(isNumber(value, line_number));
 		}
 		compare(token, &stack, line_number);
@@ -62,19 +53,45 @@ char *isNumber(char *value, unsigned int line_number)
 	unsigned int i = 0;
 
 	if ((value[i] < '0' || value[i] > '9') && value[i] != '-')
-	{
-		fprintf(stderr, "L%d: usage: push integer\n", line_number);
-		exit(EXIT_FAILURE);
-	}
+		errorHandler(1, line_number);
 	i++;
 	while (value[i])
 	{
 		if (value[i] < '0' || value[i] > '9')
-		{
-			fprintf(stderr, "L%d: usage: push integer\n", line_number);
-			exit(EXIT_FAILURE);
-		}
+			errorHandler(1, line_number);
 		i++;
 	}
 	return (value);
 }
+/**
+* errorHandler - handle all errors and call freeEverything
+* @errno: error number
+*/
+
+void errorHandler(unsigned int errno, unsigned int line_number)
+{
+	switch(errno)
+	{
+		case 1: fprintf(stderr, "L%d: usage: push integer\n", line_number);
+			break;
+		case 2: fprintf(stderr, "USAGE: monty file\n");
+			break;
+		case 3: fprintf(stderr, "Error: can't open file %s", "test");
+			break;
+		case 4: fprintf(stderr, "Error: malloc failed\n");
+			break;
+		case 5: fprintf( stderr, "L%d: can't pint, stack empty\n", line_number);
+			break;
+	}
+	
+		exit(EXIT_FAILURE);
+}
+
+
+
+
+
+
+
+
+

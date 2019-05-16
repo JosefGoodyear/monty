@@ -47,6 +47,7 @@ typedef struct globalvariables
 
 extern gbv gv;
 
+void errorHandler(unsigned int errno, unsigned int line_number);
 char *isNumber(char *value, unsigned int line_number);
 void compare(char *token, stack_t **stack, unsigned int line_number);
 void push(stack_t **stack, unsigned int line_number);
