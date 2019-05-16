@@ -1,5 +1,14 @@
 #include "monty.h"
 
+/**
+ * pop - a function that implements the pop opcode (removes the top
+ * element of the stack.
+ * @stack: a pointer to the head of the stack_t
+ * @line_number: the line number of the command
+ *
+ * Return: void
+ */
+
 void pop(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp;
@@ -15,6 +24,15 @@ void pop(stack_t **stack, unsigned int line_number)
 		(*stack)->prev = NULL;
 	free(temp);
 }
+
+/**
+ * swap - a function that implements the swap opcode (swaps the top two
+ * elements of the stack_t)
+ * @stack: a pointer to the head of the stack_t
+ * @line_number: the line number of the opcode from the text file
+ *
+ * Return: void
+ */
 
 void swap(stack_t **stack, unsigned int line_number)
 {
@@ -36,6 +54,15 @@ void swap(stack_t **stack, unsigned int line_number)
 	*stack = temp;
 }
 
+/**
+ * add - a function that implements the add opcode (adds the top two elements
+ * of the stack_t
+ * @stack: a pointer to the head of the stack_t
+ * @line_number: the line number of the opcode from the text file
+ *
+ * Return: void
+ */
+
 void add(stack_t **stack, unsigned int line_number)
 {
 	int sum;
@@ -55,6 +82,14 @@ void add(stack_t **stack, unsigned int line_number)
 	
 	(void)line_number;
 }
+
+/**
+ * nop - a function that implements the nop opcode (does nothing)
+ * @stack: a pointer to the head of the stack_t
+ * @line_number: the line number of the opcode from the text file
+ *
+ * Return: void
+ */
 
 void nop(stack_t **stack, unsigned int line_number)
 {
