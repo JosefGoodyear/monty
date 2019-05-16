@@ -11,23 +11,23 @@ gbv gv;
 */
 int main(int argc, char **argv)
 {
-	FILE *file1;
-	char *line = NULL;
 	size_t len = 0;
 	char *token = NULL;
 	stack_t *stack = NULL;
 	unsigned int line_number = 0;
 	char *value;
 
+	gv.mfile = NULL;
+	gv.line = NULL;
 	if (argc != 2)
 		errorHandler(2, line_number);
-	file1 = fopen(argv[1], "r");
-	if (!file1)
+	gv.mfile = fopen(argv[1], "r");
+	if (!gv.mfile)
 		errorHandler(3, line_number);
-	while (getline(&line, &len, file1) != EOF)
+	while (getline(&gv.line, &len, gv.mfile) != EOF)
 	{
 		line_number++;
-		token = strtok(line, " \n");
+		token = strtok(gv.line, " \n");
 		if (strcmp(token, "push") == 0)
 		{
 			value = strtok(NULL, " \n");
@@ -37,8 +37,7 @@ int main(int argc, char **argv)
 		}
 		compare(token, &stack, line_number);
 	}
-	free(line);
-	fclose(file1);
+	freeAll();
 	return (0);
 }
 /**
@@ -83,15 +82,6 @@ void errorHandler(unsigned int errno, unsigned int line_number)
 		case 5: fprintf( stderr, "L%d: can't pint, stack empty\n", line_number);
 			break;
 	}
-	
+		freeAll();	
 		exit(EXIT_FAILURE);
 }
-
-
-
-
-
-
-
-
-
