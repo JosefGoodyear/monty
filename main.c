@@ -28,17 +28,19 @@ int main(int argc, char **argv)
 	while (getline(&gv.line, &len, gv.mfile) != EOF)
 	{
 		line_number++;
-		gv.token = strtok(gv.line, " \n");
+		gv.token = strtok(gv.line, " \t\n");
 		if (!gv.token)
 			continue;
 		if (strcmp(gv.token, "push") == 0)
 		{
-			value = strtok(NULL, " \n");
+			value = strtok(NULL, " \t\n");
 			if (!value)
 				errorHandler(1, line_number);
 			gv.num = atoi(isNumber(value, line_number));
 		}
 		compare(gv.token, &gv.stack, line_number);
+		free(gv.line);
+		gv.line = NULL;
 	}
 	freeAll();
 	return (0);

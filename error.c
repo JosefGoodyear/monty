@@ -17,7 +17,7 @@ void errorHandler(unsigned int errno, unsigned int line_number)
 				fprintf(stderr, "USAGE: monty file\n");
 				break;
 			case 3:
-				fprintf(stderr, "Error: can't open file %s\n", gv.filename);
+				fprintf(stderr, "Error: Can't open file %s\n", gv.filename);
 				break;
 			case 4:
 				fprintf(stderr, "Error: malloc failed\n");
